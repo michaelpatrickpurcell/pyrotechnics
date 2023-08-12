@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{pyrotechnics}
+
+\setlength{\bleed}{0pt}
+\begin{document}
+\begin{tikzpicture}[x=1in, y=1in]
+\begin{scope}
+\clip[rounded corners=3mm] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+
+\pic at (0,0) {cardbackprintable2={red}{yellow}};
+\end{scope}
+\draw[line width=0.75mm, BlueSky, rounded corners=3mm] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+\end{tikzpicture}
+\end{document}

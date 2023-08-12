@@ -1,0 +1,136 @@
+\documentclass[a4paper, oneside]{article}
+\usepackage[margin=0.125in]{geometry}
+\usepackage[skip=0pt]{parskip}
+
+\usepackage{pyrotechnics}
+
+
+\begin{document}
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {cardbackprintable2={red}{yellow}};
+\pic () at (\horizdist,0) {cardbackprintable2={red}{green}};
+\pic () at (2\horizdist,0) {cardbackprintable2={red}{blue}};
+
+\pic () at (0,-\vertdist) {cardbackprintable2={red}{white}};
+\pic () at (\horizdist,-\vertdist) {cardbackprintable2={yellow}{green}};
+\pic () at (2\horizdist,-\vertdist) {cardbackprintable2={yellow}{blue}};
+
+\pic () at (0,-2\vertdist) {cardbackprintable2={yellow}{white}};
+\pic () at (\horizdist,-2\vertdist) {cardbackprintable2={green}{blue}};
+\pic () at (2\horizdist,-2\vertdist) {cardbackprintable2={green}{white}};
+
+%\pic () at (0, -3\vertdist) {targetcardbackprintable};
+\pic () at (\horizdist,-3\vertdist) {cardbackprintable2={blue}{white}};
+%\pic () at (2\horizdist, -3\vertdist) {targetcardbackprintable};
+
+\end{tikzpicture}	
+\end{center}
+\newpage%
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {cardfrontprintable2={blue}{red}};
+\pic () at (\horizdist, 0) {cardfrontprintable2={green}{red}};
+\pic () at (2\horizdist, 0) {cardfrontprintable2={yellow}{red}};
+
+\pic () at (0, -\vertdist) {cardfrontprintable2={blue}{yellow}};
+\pic () at (\horizdist, -\vertdist) {cardfrontprintable2={green}{yellow}};
+\pic () at (2\horizdist, -\vertdist) {cardfrontprintable2={white}{red}};
+
+\pic () at (0, -2\vertdist) {cardfrontprintable2={white}{green}};
+\pic () at (\horizdist, -2\vertdist) {cardfrontprintable2={blue}{green}};
+\pic () at (2\horizdist, -2\vertdist) {cardfrontprintable2={white}{yellow}};
+
+%\pic () at (0, -3\vertdist) {targetcardfrontprintable4={red}{yellow}{green}{blue}};
+\pic () at (\horizdist, -3\vertdist) {cardfrontprintable2={white}{blue}};
+%\pic () at (2\horizdist, -3\vertdist) {targetcardfrontprintable4={red}{yellow}{green}{white}};
+\end{tikzpicture}
+\end{center}
+\newpage%
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {cardbackprintable2={red}{yellow}};
+\pic () at (\horizdist,0) {cardbackprintable2={red}{green}};
+\pic () at (2\horizdist,0) {cardbackprintable2={red}{blue}};
+
+\pic () at (0,-\vertdist) {cardbackprintable2={red}{white}};
+\pic () at (\horizdist,-\vertdist) {cardbackprintable2={yellow}{green}};
+\pic () at (2\horizdist,-\vertdist) {cardbackprintable2={yellow}{blue}};
+
+\pic () at (0,-2\vertdist) {cardbackprintable2={yellow}{white}};
+\pic () at (\horizdist,-2\vertdist) {cardbackprintable2={green}{blue}};
+\pic () at (2\horizdist,-2\vertdist) {cardbackprintable2={green}{white}};
+
+%\pic () at (0, -3\vertdist) {targetcardbackprintable};
+\pic () at (\horizdist,-3\vertdist) {cardbackprintable2={blue}{white}};
+%\pic () at (2\horizdist, -3\vertdist) {targetcardbackprintable};
+\end{tikzpicture}	
+\end{center}
+\newpage%
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {cardfrontprintable2={red}{blue}};
+\pic () at (\horizdist, 0) {cardfrontprintable2={red}{green}};
+\pic () at (2\horizdist, 0) {cardfrontprintable2={red}{yellow}};
+
+\pic () at (0, -\vertdist) {cardfrontprintable2={yellow}{blue}};
+\pic () at (\horizdist, -\vertdist) {cardfrontprintable2={yellow}{green}};
+\pic () at (2\horizdist, -\vertdist) {cardfrontprintable2={red}{white}};
+
+\pic () at (0, -2\vertdist) {cardfrontprintable2={green}{white}};
+\pic () at (\horizdist, -2\vertdist) {cardfrontprintable2={green}{blue}};
+\pic () at (2\horizdist, -2\vertdist) {cardfrontprintable2={yellow}{white}};
+
+%\pic () at (0, -3\vertdist) {targetcardfrontprintable4={red}{yellow}{blue}{white}};
+\pic () at (\horizdist, -3\vertdist) {cardfrontprintable2={blue}{white}};
+%\pic () at (2\horizdist, -3\vertdist) {targetcardfrontprintable4={red}{green}{blue}{white}};
+\end{tikzpicture}
+\end{center}
+\newpage%
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {targetcardbackprintable};
+\pic () at (\horizdist,0) {targetcardbackprintable};
+\pic () at (2\horizdist,0) {targetcardbackprintable};
+
+\pic () at (0,-\vertdist) {targetcardbackprintable};
+\pic () at (\horizdist,-\vertdist) {targetcardbackprintable};
+\pic () at (2\horizdist,-\vertdist) {targetcardbackprintable};
+
+\pic () at (0,-2\vertdist) {targetcardbackprintable};
+\pic () at (\horizdist,-2\vertdist) {targetcardbackprintable};
+\pic () at (2\horizdist,-2\vertdist) {targetcardbackprintable};
+
+\pic () at (0, -3\vertdist) {targetcardbackprintable};
+\pic () at (\horizdist,-3\vertdist) {targetcardbackprintable};
+\pic () at (2\horizdist, -3\vertdist) {targetcardbackprintable};
+\end{tikzpicture}	
+\end{center}
+\newpage%
+\phantom{a}
+\begin{center}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic () at (0,0) {targetcardfrontprintable3={red}{yellow}{green}};
+\pic () at (\horizdist, 0) {targetcardfrontprintable3={red}{yellow}{blue}};
+\pic () at (2\horizdist, 0) {targetcardfrontprintable3={red}{yellow}{white}};
+
+\pic () at (0, -\vertdist) {targetcardfrontprintable3={yellow}{green}{blue}};
+\pic () at (\horizdist, -\vertdist) {targetcardfrontprintable3={yellow}{green}{white}};
+\pic () at (2\horizdist, -\vertdist) {targetcardfrontprintable3={green}{blue}{white}};
+
+\pic () at (0, -2\vertdist) {targetcardfrontprintable3={red}{green}{blue}};
+\pic () at (\horizdist, -2\vertdist) {targetcardfrontprintable3={red}{green}{white}};
+\pic () at (2\horizdist, -2\vertdist) {targetcardfrontprintable3={yellow}{blue}{white}};
+
+\pic () at (0, -3\vertdist) {targetcardfrontprintable4={red}{yellow}{green}{blue}};
+\pic () at (\horizdist, -3\vertdist) {targetcardfrontprintable3={red}{blue}{white}};
+\pic () at (2\horizdist, -3\vertdist) {targetcardfrontprintable5={red}{yellow}{green}{blue}{white}};
+\end{tikzpicture}
+\end{center}
+
+\end{document}

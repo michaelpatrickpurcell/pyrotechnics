@@ -1,0 +1,342 @@
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{math}
+\usepgflibrary{shadings}
+\usetikzlibrary{fadings}
+
+\usepackage{calc}
+\usepackage{fontspec}
+\usepackage{ifthen}
+
+\definecolor{BlueSky}{HTML}{0F1633}
+\definecolor{myred}{HTML}{ff0000}
+\definecolor{myyellow}{HTML}{ffff00}
+\definecolor{mygreen}{HTML}{00ff00}
+\definecolor{myblue}{HTML}{00ffff}
+\definecolor{mypurple}{HTML}{ff00ff}
+\definecolor{mywhite}{HTML}{ffffff}
+
+\newlength{\cardwidth}
+\newlength{\cardheight}
+\newlength{\bleed}
+\newlength{\horizspace}
+\newlength{\vertspace}
+\newlength{\vertdist}
+\newlength{\horizdist}
+
+\setlength{\cardwidth}{2.5in}
+\setlength{\cardheight}{2.5in}
+%\setlength{\cardheight}{3.5in}
+\setlength{\bleed}{0.0625in}
+\setlength{\horizspace}{0.0625in}
+\setlength{\horizdist}{\cardwidth + 2\bleed + \horizspace}
+\setlength{\vertspace}{0.0625in}
+\setlength{\vertdist}{\cardheight + 2\bleed + \vertspace}
+
+\tikzset{guidecross/.pic={
+	\draw[#1] (-\bleed,0) -- (\bleed,0);
+	\draw[#1] (0, -\bleed) -- (0, \bleed);
+}}
+
+\tikzset{cutguide/.pic={
+	\pic () at (-\cardwidth/2, \cardheight/2) {guidecross={#1}};
+	\pic () at (\cardwidth/2, \cardheight/2) {guidecross={#1}};
+	\pic () at (-\cardwidth/2, -\cardheight/2) {guidecross={#1}};
+	\pic () at (\cardwidth/2, -\cardheight/2) {guidecross={#1}};
+}}
+
+\tikzset{cardbackpattern/.pic={
+	\foreach \i in {-1.25, -1.0,...,1.25}
+		\foreach \j in {-1.25, -1.0, ..., 1.25}
+			\draw[very thick, #1] (\i,\j) circle (0.105);
+
+	\foreach \i in {-1.375, -1.125, -0.875,...,1.125, 1.375}
+		\foreach \j in {-1.375, -1.125, ..., 1.375}
+			\draw[very thick, #1] (\i,\j) circle (0.105);
+}}
+
+%\tikzset{pics/cardbackpattern2/.style n args={2}{
+%code = {
+%	\foreach \i in {7.5, 37.5,...,337.5}
+%			\draw[very thick, BlueSky, fill=#1] (0,0) -- (\i:4in) -- (\i+15:4in) -- cycle;
+%	\foreach \i in {22.5, 52.5,...,352.5}
+%			\draw[very thick, BlueSky, fill=#2] (0,0) -- (\i:4in) -- (\i+15:4in) -- cycle;
+%}}}
+
+
+\tikzset{pics/cardfrontpattern/.style n args={2}{
+	code={
+	\node[inner sep=0pt] at (0,0) {\includegraphics[width=2.5in]{Images/fireworks1_#2.png}};
+	\node[inner sep=0pt] at (0,0) {\includegraphics[width=2.5in]{Images/fireworks2_#2.png}};
+	
+	\fill[BlueSky, path fading = radial fade] (-1.3mm, 1.85mm) circle (0.9in);
+
+	\fill[BlueSky] (-1.3mm, 1.85mm) circle (0.5cm);
+	\fill[my#1, path fading = radial fade] (-1.3mm, 1.85mm) circle (0.5cm);
+
+}}}
+
+\tikzset{pics/targetcardfrontpattern5/.style n args={5}{
+	code={
+	\node[inner sep=0pt] at (270:0.7in) {\includegraphics[width=0.9in]{Images/fireworks1_#1.png}};
+	\node[inner sep=0pt] at (270:0.7in) {\includegraphics[width=0.9in]{Images/fireworks2_#1.png}};
+
+	\node[inner sep=0pt] at (342:0.7in) {\includegraphics[width=0.9in]{Images/fireworks1_#2.png}};
+	\node[inner sep=0pt] at (342:0.7in) {\includegraphics[width=0.9in]{Images/fireworks2_#2.png}};
+
+	\node[inner sep=0pt] at (54:0.7in) {\includegraphics[width=0.9in]{Images/fireworks1_#3.png}};
+	\node[inner sep=0pt] at (54:0.7in) {\includegraphics[width=0.9in]{Images/fireworks2_#3.png}};
+
+	\node[inner sep=0pt] at (126:0.7in) {\includegraphics[width=0.9in]{Images/fireworks1_#4.png}};
+	\node[inner sep=0pt] at (126:0.7in) {\includegraphics[width=0.9in]{Images/fireworks2_#4.png}};
+
+	\node[inner sep=0pt] at (198:0.7in) {\includegraphics[width=0.9in]{Images/fireworks1_#5.png}};
+	\node[inner sep=0pt] at (198:0.7in) {\includegraphics[width=0.9in]{Images/fireworks2_#5.png}};
+
+}}}
+
+\tikzset{pics/targetcardfrontpattern4/.style n args={4}{
+	code={
+%	\node[minimum width=2.5in, minimum height=2.5in, fill=red] at (0,0) {};
+	\node[inner sep=0pt] at (45:0.775in) {\includegraphics[width=1.2in]{Images/fireworks1_#1.png}};
+	\node[inner sep=0pt] at (45:0.775in) {\includegraphics[width=1.2in]{Images/fireworks2_#1.png}};
+
+	\node[inner sep=0pt] at (135:0.775in) {\includegraphics[width=1.2in]{Images/fireworks1_#2.png}};
+	\node[inner sep=0pt] at (135:0.775in) {\includegraphics[width=1.2in]{Images/fireworks2_#2.png}};
+
+	\node[inner sep=0pt] at (225:0.775in) {\includegraphics[width=1.2in]{Images/fireworks1_#3.png}};
+	\node[inner sep=0pt] at (225:0.775in) {\includegraphics[width=1.2in]{Images/fireworks2_#3.png}};
+
+	\node[inner sep=0pt] at (315:0.775in) {\includegraphics[width=1.2in]{Images/fireworks1_#4.png}};
+	\node[inner sep=0pt] at (315:0.775in) {\includegraphics[width=1.2in]{Images/fireworks2_#4.png}};
+
+}}}
+
+\tikzset{pics/targetcardfrontpattern3/.style n args={3}{
+	code={
+%	\node[minimum width=2.5in, minimum height=2.5in, fill=red] at (0,0) {};
+	\node[inner sep=0pt] at (270:0.625in) {\includegraphics[width=1.2in]{Images/fireworks1_#1.png}};
+	\node[inner sep=0pt] at (270:0.625in) {\includegraphics[width=1.2in]{Images/fireworks2_#1.png}};
+
+	\node[inner sep=0pt] at (30:0.625in) {\includegraphics[width=1.2in]{Images/fireworks1_#2.png}};
+	\node[inner sep=0pt] at (30:0.625in) {\includegraphics[width=1.2in]{Images/fireworks2_#2.png}};
+
+	\node[inner sep=0pt] at (150:0.625in) {\includegraphics[width=1.2in]{Images/fireworks1_#3.png}};
+	\node[inner sep=0pt] at (150:0.625in) {\includegraphics[width=1.2in]{Images/fireworks2_#3.png}};
+}}}
+
+\tikzset{pics/targetcardfrontpattern2/.style n args={2}{
+	code={
+%	\node[minimum width=2.5in, minimum height=2.5in, fill=red] at (0,0) {};
+	\node[inner sep=0pt] at (45:0.625in) {\includegraphics[width=1.4in]{Images/fireworks1_#1.png}};
+	\node[inner sep=0pt] at (45:0.625in) {\includegraphics[width=1.4in]{Images/fireworks2_#1.png}};
+
+	\node[inner sep=0pt] at (225:0.625in) {\includegraphics[width=1.4in]{Images/fireworks1_#2.png}};
+	\node[inner sep=0pt] at (225:0.625in) {\includegraphics[width=1.4in]{Images/fireworks2_#2.png}};
+}}}
+
+\tikzset{pics/targetcardfrontpattern1/.style n args={1}{
+	code={
+%	\node[minimum width=2.5in, minimum height=2.5in, fill=red] at (0,0) {};
+	\node[inner sep=0pt] at (0,0) {\includegraphics[width=1.75in]{Images/fireworks1_#1.png}};
+	\node[inner sep=0pt] at (0,0) {\includegraphics[width=1.75in]{Images/fireworks2_#1.png}};
+}}}
+
+
+\tikzfading[name=radial fade, inner color=transparent!0, outer color=transparent!100]
+
+\tikzfading[name=radial fade reverse, inner color=transparent!100, outer color=transparent!0]
+
+\tikzset{pics/cardbackprintable2/.style n args={2}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	\fill[BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	% Pattern for card back
+	\fill[white, path fading = radial fade] (0,0) circle (1.35in);
+	\node () at (0,0) {\includegraphics[width=1.75in]{Images/fireworks_box_#1_#2.png}};
+
+
+
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={BlueSky}};
+\end{scope}
+}}}
+
+
+
+\tikzset{targetcardbackprintable/.pic={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card back
+	\path[fill=white] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {cardbackpattern=BlueSky};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}
+
+
+
+\tikzset{pics/cardfrontprintable2/.style n args={2}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {cardfrontpattern={#1}{#2}};
+
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
+
+
+
+\tikzset{pics/targetcardfrontprintable5/.style n args={5}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0.05) {targetcardfrontpattern5={#1}{#2}{#3}{#4}{#5}};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
+
+\tikzset{pics/targetcardfrontprintable4/.style n args={4}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {targetcardfrontpattern4={#1}{#2}{#3}{#4}};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
+
+\tikzset{pics/targetcardfrontprintable3/.style n args={3}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0.1) {targetcardfrontpattern3={#1}{#2}{#3}};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
+
+\tikzset{pics/targetcardfrontprintable2/.style n args={2}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {targetcardfrontpattern2={#1}{#2}};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
+
+\tikzset{pics/targetcardfrontprintable1/.style n args={1}{
+	code={
+	\begin{scope}
+	\clip (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+	% Pattern for card front
+	\path[fill=BlueSky] (-\cardwidth/2 - \bleed, 0in) --%
+	      (-\cardwidth/2 - \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, \cardheight/2 + \bleed) --%
+	      (\cardwidth/2 + \bleed, -\cardheight/2 - \bleed) --%
+	      (-\cardwidth/2 - \bleed, -\cardheight/2 - \bleed) --%
+	      cycle;
+
+	\pic () at (0,0) {targetcardfrontpattern1={#1}};
+	% Cutting guides for corners of the cards	
+	\pic () at (0,0) {cutguide={white}};
+\end{scope}
+}}}
