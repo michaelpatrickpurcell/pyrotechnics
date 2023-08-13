@@ -1,0 +1,12 @@
+\documentclass{standalone}
+\usepackage{pyrotechnics}
+
+\providecommand{\first}{red}% fallback definition
+\providecommand{\second}{yellow}% fallback definition
+
+\setlength{\bleed}{0pt}
+\begin{document}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic at (0,0) {cardbackprintable2={\first}{\second}};
+\end{tikzpicture}
+\end{document}

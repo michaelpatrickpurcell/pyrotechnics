@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{pyrotechnics}
+
+\providecommand{\first}{Red}% fallback definition
+\providecommand{\second}{Yellow}% fallback definition
+\providecommand{\third}{Green}% fallback definition
+\providecommand{\fourth}{Blue}% fallback definition
+
+\setlength{\bleed}{0pt}
+\begin{document}
+\begin{tikzpicture}[x=1in, y=1in]
+\pic at (0,0) {targetcardfrontprintable4={\first}{\second}{\third}{\fourth}};
+\end{tikzpicture}
+\end{document}
