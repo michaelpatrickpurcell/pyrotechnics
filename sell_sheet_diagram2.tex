@@ -1,0 +1,28 @@
+\documentclass{standalone}
+\usepackage{pyrotechnics}
+\setmainfont[Scale=4.0]{Quicksand}
+\definecolor{SunriseBlue}{HTML}{0482ba}
+
+\usetikzlibrary{shapes}
+\tikzset{nextarrow/.pic={
+	\node[single arrow, ultra thick, fill=SunriseBlue, inner sep=0pt, minimum height=1.25in, minimum width=1in] () at (0,0) {\phantom{-}};
+}}
+
+\begin{document}
+\begin{tikzpicture}
+\node[inner sep=0pt] at (-3.85in,0) {\includegraphics[width=2in]{Images/fireworks_card_back_display.png}};
+
+\pic at (-2in,0) {nextarrow};
+
+\node[inner sep=0pt] at (0,0) {\includegraphics[width=2in]{Images/fireworks_card_front_display.png}};
+
+\node[inner sep=0pt, rotate=75] at (1.5in,0) {\tikz{\draw[line width=5mm, SunriseBlue] (0,0) -- (2.25in,0)}};
+
+\node[inner sep=0pt] at (3in,0) {\includegraphics[width=2in]{Images/fireworks_card_front_display2.png}};
+
+%\node at (-1.5in, 0) {\Huge ?};
+%\node at (1.5in, 0) {\Huge ?};
+
+
+\end{tikzpicture}
+\end{document}
