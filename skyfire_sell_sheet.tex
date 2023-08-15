@@ -1,0 +1,110 @@
+\documentclass[a5paper, DIV=18, 12pt]{scrartcl}
+\usepackage{pyrotechnics}
+\usepackage{multicol}
+\setlength\columnsep{1cm}
+\usepackage{enumitem}
+\usepackage[margin=0.925cm]{geometry}
+
+\setmainfont[Scale=1.0]{Tex Gyre Schola}
+
+\setkomafont{section}{\setmainfont[Scale=1.125]{Quicksand-Bold}\LARGE}
+\setkomafont{subsection}{\setmainfont{Quicksand-Bold}\Large}
+\setkomafont{subsubsection}{\setmainfont{Quicksand-Bold}\large}
+
+% Adjust spacing before and after section headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=0.5\baselineskip
+]{section}
+
+% Adjust spacing before and after subsection headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=0.25\baselineskip
+]{subsection}
+
+% Adjust spacing before and after subsubsection headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=0.25\baselineskip
+]{subsubsection}
+
+\definecolor{SunriseBlue}{HTML}{0482ba}
+\color{BlueSky}
+\pagestyle{empty}
+\begin{document}
+\enlargethispage{2\baselineskip}
+%\begin{tikzpicture}
+%%\path[draw, red] (-74.25mm, -105mm) -- (74.25mm,105mm);
+%\node[inner sep=0mm] at (0,80mm) {{\setmainfont[Scale=3.0]{Oi}\Huge Aloft}};
+%\node[inner sep=0mm] at (0,60mm) {{\setmainfont[Scale=1.25]{Playball}\Huge Designed by Michael Purcell}};
+%\node[inner sep=0mm] at (0, 40mm) {This is a test};
+%\end{tikzpicture}
+\vspace{-1ex}
+\begin{center}
+\includegraphics[width=\textwidth]{Images/skyfire_banner.png}
+\end{center}
+\vspace{-0.0ex}
+\includegraphics[scale=0.125]{Images/Icons/player_count_icon.png} {\setmainfont[Scale=1.25]{Quicksand-Bold}\Huge \raisebox{6.55pt}{\textcolor{SunriseBlue}{:\ 3-5}}} \hfill \includegraphics[scale=0.125]{Images/Icons/player_age_icon.png} {\setmainfont[Scale=1.125]{Quicksand-Bold}\Huge \raisebox{6.55pt}{\textcolor{SunriseBlue}{:\ 12+}}}\hfill \includegraphics[scale=0.125]{Images/Icons/playtime_icon.png} {\setmainfont[Scale=1.125]{Quicksand-Bold}\Huge \raisebox{6.55pt}{\textcolor{SunriseBlue}{:\ 20-30}}}
+\vspace{-0.75ex}
+\flushleft
+SkyFire is a game of wits, deception, and social deduction. During the game, you will work with your opponents to launch collections of fireworks.  Can you outmaneuver them to claim victory? % Each round, you will try to guess when one of those collections satisfies the target for that round. Your opponents, however, will try to trick you into guessing incorrectly!
+
+\vspace{2ex}
+
+\includegraphics[width=0.19\textwidth]{Images/fireworks_card_front_display3.png} \hfill
+\includegraphics[width=0.19\textwidth]{Images/fireworks_card_front_display.png} \hfill
+\includegraphics[width=0.19\textwidth]{Images/fireworks_card_front_display.png} \hfill
+\includegraphics[width=0.19\textwidth]{Images/fireworks_card_front_display.png} \hfill
+\includegraphics[width=0.19\textwidth]{Images/fireworks_card_front_display2.png}
+
+\vspace{-0.0ex}
+
+\begin{multicols}{2}
+\section*{\textcolor{SunriseBlue}{Gameplay}}
+Build collections of fireworks by playing fireworks cards face down to the launch zones.
+
+\vspace{2ex}
+
+Try to guess when one of the collections of fireworks has a firework of every color shown on the target card.
+
+\vspace{2ex}
+
+Launch fireworks by turning over all of the fireworks cards at any one launch zone. Boom!
+ \vfill\null\columnbreak
+
+\section*{\textcolor{SunriseBlue}{Components}}
+\begin{itemize}[nosep, leftmargin=*]
+\item 32 cards
+	\vspace{0.5ex}
+\begin{itemize}[nosep, leftmargin=*]
+	\item 20 fireworks cards
+	\vspace{0.5ex}
+	\item 10 target cards
+	\vspace{0.5ex}
+	\item 2 finale cards
+\end{itemize}
+\end{itemize}
+
+\vspace{1ex}
+
+Each fireworks card displays two colors on its back, only one of which appears on its front.
+
+\vspace{-1ex}
+
+\begin{center}
+\includegraphics[width=\columnwidth]{Images/sell_sheet_diagram2.png}
+\end{center}
+\phantom{a}
+\end{multicols}
+
+%\vspace{-9ex}
+%
+%\section*{\phantom{a}\hfill\textcolor{SunriseBlue}{Deduction \& Deception}\hfill\phantom{a}}
+%This is a test.
+\vspace{-4ex}
+\textbf{Design:} Michael Purcell \hfill \textbf{Contact:} skyfire.card.game@gmail.com
+\end{document}
